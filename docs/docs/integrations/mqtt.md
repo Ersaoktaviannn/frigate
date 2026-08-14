@@ -306,8 +306,8 @@ Topic with current state of notifications. Published values are `ON` and `OFF`.
 
 Publishes the current health status of each role that is enabled (`audio`, `detect`, `record`). Possible values are:
 
-- `online`: Stream is running and being processed
-- `offline`: Stream is offline and is being restarted
+- `online`: Frigate's process for the role is running normally
+- `offline`: The process is down and Frigate is restarting it
 - `disabled`: Camera is currently turned off (either at runtime via the `enabled/set` topic, or persistently via the configuration file). See [Camera state](/configuration/live#camera-state) for the distinction.
 
 These reflect the state of Frigate's process for that role, not the camera's reachability, so an unreachable camera alternates between `offline` and `online` as the watchdog restarts ffmpeg. Wait for the status to hold steady (for example with Home Assistant's `for:`) rather than acting on a single message.
